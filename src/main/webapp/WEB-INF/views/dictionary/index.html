@@ -9,7 +9,7 @@
 <p>PEOPLE:</p>
 <div th:each="word : ${words}">
     <a th:href="@{/words/{id}(id=${word.getId()})}"
-       th:text="${word.getWord() + ', ' + word.getTranslation()}">word</a>
+       th:text="${word.getExpression() + ', ' + word.getTranslation()}">word</a>
 </div>
 
 <br/>

@@ -2,7 +2,7 @@ package ru.sefiros.model;
 
 public class Word {
     private int id;
-    private String word;
+    private String expression;
     private String translation;
 
     public Word() {
@@ -10,7 +10,7 @@ public class Word {
 
     public Word(int id, String word, String translation) {
         this.id = id;
-        this.word = word;
+        this.expression = word;
         this.translation = translation;
     }
 
@@ -22,12 +22,12 @@ public class Word {
         this.id = id;
     }
 
-    public String getWord() {
-        return word;
+    public String getExpression() {
+        return expression;
     }
 
-    public void setWord(String word) {
-        this.word = word;
+    public void setExpression(String expression) {
+        this.expression = expression;
     }
 
     public String getTranslation() {
