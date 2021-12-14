@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary</title>
+</head>
+<body>
+
+<p>PEOPLE:</p>
+<div th:each="word : ${words}">
+    <a th:href="@{/words/{id}(id=${word.getId()})}"
+       th:text="${word.getWord() + ', ' + word.getTranslation()}">word</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/words/new">Add new word</a>
+
+</body>
+</html>
