@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Word</title>
+</head>
+<body>
+
+<p th:text="${word.getExpression() + ' = ' + word.getTranslation()}">VALUE</p>
+<p th:text="${'ID: ' + word.getId()}">VALUE</p>
+
+<a th:href="@{/dictionary/{id}/edit(id=${word.getId()})}">Edit</a>
+
+</br>
+</br>
+
+<form th:method="DELETE" th:action="@{/dictionary/{id}(id=${word.getId()})}">
+    <input type="submit" value="Delete">
+</form>
+
+</body>
+</html>
