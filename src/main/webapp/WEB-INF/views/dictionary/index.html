@@ -6,16 +6,16 @@
 </head>
 <body>
 
-<p>PEOPLE:</p>
+<p>WORDS:</p>
 <div th:each="word : ${words}">
-    <a th:href="@{/words/{id}(id=${word.getId()})}"
+    <a th:href="@{/dictionary/{id}(id=${word.getId()})}"
        th:text="${word.getExpression() + ', ' + word.getTranslation()}">word</a>
 </div>
 
 <br/>
 <hr/>
 
-<a href="/words/new">Add new word</a>
+<a href="/dictionary/new">Add new word</a>
 
 </body>
 </html>
