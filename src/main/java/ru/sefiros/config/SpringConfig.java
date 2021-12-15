@@ -59,8 +59,8 @@ public class SpringConfig implements WebMvcConfigurer {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties")) {
-
+        try (InputStream input =
+                     getClass().getClassLoader().getResourceAsStream("sql.properties")) {
             Properties prop = new Properties();
             prop.load(input);
 
