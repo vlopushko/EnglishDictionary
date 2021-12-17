@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update word</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/dictionary/{id}(id=${word.getId()})}" th:object="${word}">
+    <label for="expression">Enter expression: </label>
+    <input type="text" th:field="*{expression}" id="expression"/>
+    <div style="color:red" th:if="${#fields.hasErrors('expression')}" th:errors="*{expression}">expression error</div>
+    <br/>
+    <label for="translation">Enter translation: </label>
+    <input type="text" th:field="*{translation}" id="translation"/>
+    <div style="color:red" th:if="${#fields.hasErrors('translation')}" th:errors="*{translation}">translation error</div>
+    <br/>
+    <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>

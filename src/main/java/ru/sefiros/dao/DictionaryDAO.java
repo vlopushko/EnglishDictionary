@@ -27,8 +27,13 @@ public class DictionaryDAO {
                 new BeanPropertyRowMapper<>(Word.class)).stream().findAny().orElse(null);
     }
 
-    public void save(Word person) {
-        jdbcTemplate.update("INSERT INTO Person VALUES(1,?,?)", person.getExpression(),
-                person.getTranslation());
+    public void save(Word word) {
+        jdbcTemplate.update("INSERT INTO Word VALUES(4,?,?)", word.getExpression(),
+                word.getTranslation());
+    }
+
+    public void update(int id, Word word) {
+        jdbcTemplate.update("UPDATE Word SET expression=?, translation=? WHERE id=?",
+                word.getExpression(), word.getTranslation(), id);
     }
 }
