@@ -36,4 +36,9 @@ public class DictionaryDAO {
         jdbcTemplate.update("UPDATE Word SET expression=?, translation=? WHERE id=?",
                 word.getExpression(), word.getTranslation(), id);
     }
+
+    public void createPostgresqlTable() {
+        jdbcTemplate.update("CREATE TABLE word(id SERIAL PRIMARY KEY NOT NULL," +
+                        "expression VARCHAR, translation VARCHAR)");
+    }
 }

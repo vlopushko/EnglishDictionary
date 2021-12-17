@@ -65,4 +65,11 @@ public class DictionaryController {
         dictionaryDAO.update(id, word);
         return "redirect:/dictionary";
     }
+
+    //To initialize DB structure, execute /dictionary/createPostgresqlTable GET-request
+    @GetMapping("/createPostgresqlTable")
+    public String createPostgresqlTable() {
+        dictionaryDAO.createPostgresqlTable();
+        return "redirect:/dictionary";
+    }
 }
