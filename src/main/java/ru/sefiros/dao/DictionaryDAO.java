@@ -10,7 +10,6 @@ import java.util.List;
 
 @Component
 public class DictionaryDAO {
-
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -28,7 +27,8 @@ public class DictionaryDAO {
     }
 
     public void save(Word word) {
-        jdbcTemplate.update("INSERT INTO Word VALUES(4,?,?)", word.getExpression(),
+        jdbcTemplate.update("INSERT INTO Word(expression, translation) VALUES(?,?)",
+                word.getExpression(),
                 word.getTranslation());
     }
 
