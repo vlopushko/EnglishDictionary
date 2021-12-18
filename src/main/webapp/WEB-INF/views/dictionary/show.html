@@ -6,17 +6,31 @@
 </head>
 <body>
 
-<p th:text="${word.getExpression() + ' = ' + word.getTranslation()}">VALUE</p>
-<p th:text="${'ID: ' + word.getId()}">VALUE</p>
-
-<a th:href="@{/dictionary/{id}/edit(id=${word.getId()})}">Edit</a>
+<table align="center" border="1" width="600">
+    <tr>
+        <th>ID</th>
+        <th th:text="${word.getId()}">ID</th>
+    </tr>
+    <tr>
+        <th>Expression</th>
+        <th th:text="${word.getExpression()}">Expression</th>
+    </tr>
+    <tr>
+        <th>Translation</th>
+        <th th:text="${word.getTranslation()}">Translation</th>
+    </tr>
+</table>
 
 </br>
-</br>
 
-<form th:method="DELETE" th:action="@{/dictionary/{id}(id=${word.getId()})}">
-    <input type="submit" value="Delete">
-</form>
+<table align="center" width="200">
+    <tr>
+        <th><a th:href="@{/dictionary/{id}/edit(id=${word.getId()})}">Edit</a></th>
+        <th><form th:method="DELETE" th:action="@{/dictionary/{id}(id=${word.getId()})}">
+            <input type="submit" value="Delete">
+        </form></th>
+    </tr>
+</table>
 
 </body>
 </html>
