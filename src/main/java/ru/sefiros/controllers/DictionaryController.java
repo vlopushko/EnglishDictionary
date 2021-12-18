@@ -66,6 +66,12 @@ public class DictionaryController {
         return "redirect:/dictionary";
     }
 
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        dictionaryDAO.delete(id);
+        return "redirect:/dictionary";
+    }
+
     //To initialize DB structure, execute /dictionary/createPostgresqlTable GET-request
     @GetMapping("/createPostgresqlTable")
     public String createPostgresqlTable() {

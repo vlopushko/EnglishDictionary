@@ -37,6 +37,10 @@ public class DictionaryDAO {
                 word.getExpression(), word.getTranslation(), id);
     }
 
+    public void delete(int id) {
+        jdbcTemplate.update("DELETE FROM Word WHERE id=?", id);
+    }
+
     public void createPostgresqlTable() {
         jdbcTemplate.update("CREATE TABLE word(id SERIAL PRIMARY KEY NOT NULL," +
                         "expression VARCHAR, translation VARCHAR)");
