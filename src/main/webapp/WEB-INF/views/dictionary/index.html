@@ -6,15 +6,6 @@
 </head>
 <body>
 
-<p>WORDS:</p>
-<div th:each="word : ${words}">
-    <a th:href="@{/dictionary/{id}(id=${word.getId()})}"
-       th:text="${word.getExpression() + ', ' + word.getTranslation()}">word</a>
-</div>
-
-<br/>
-<hr/>
-
 <table align="center" border="1" width="600">
     <colgroup>
         <col style="background:Khaki">
@@ -32,8 +23,12 @@
     </tr>
 </table>
 
-</br>
-<a href="/dictionary/new">Add new word</a>
+<div align="center">
+    </br>
+    <a href="/dictionary/new">Add new word</a>
+    </br>
+    <a href="/dictionary/learn">Start learning!</a>
+</div>
 
 </body>
 </html>
