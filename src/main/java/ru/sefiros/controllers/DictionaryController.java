@@ -73,6 +73,22 @@ public class DictionaryController {
     }
 
     //To initialize DB structure, execute /dictionary/createPostgresqlTable GET-request
+    @GetMapping("/learn")
+    public String learn(Model model) {
+        model.addAttribute("word", dictionaryDAO.getWordToLearn());
+        return "dictionary/learn";
+    }
+
+    @PostMapping("/learn")
+    public String wordLearned(@RequestParam("id") int id,
+                              @RequestParam("direction") boolean direction,
+                              Model model) {
+        System.out.println(id);
+        System.out.println(direction);
+        return "redirect:/dictionary/learn";
+    }
+
+    //To initialize DB structure, execute /dictionary/createPostgresqlTable GET-request
     @GetMapping("/createPostgresqlTable")
     public String createPostgresqlTable() {
         dictionaryDAO.createPostgresqlTable();

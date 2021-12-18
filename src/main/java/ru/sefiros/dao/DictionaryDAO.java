@@ -41,6 +41,11 @@ public class DictionaryDAO {
         jdbcTemplate.update("DELETE FROM Word WHERE id=?", id);
     }
 
+    public Word getWordToLearn() {
+        return jdbcTemplate.query("SELECT * FROM Word", new BeanPropertyRowMapper<>(Word.class))
+                .stream().findAny().orElse(null);
+    }
+
     public void createPostgresqlTable() {
         jdbcTemplate.update("CREATE TABLE word(id SERIAL PRIMARY KEY NOT NULL," +
                         "expression VARCHAR, translation VARCHAR)");

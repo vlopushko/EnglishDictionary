@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://thymeleaf.org">
+
+<script type="text/javascript">
+function toggle_show(id) {
+	document.getElementById(id).style.display = document.getElementById(id).style.display == 'none' ? 'block' : 'none';
+}
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Word</title>
+</head>
+<body>
+
+<table align="center" border="1" width="600">
+    <tr>
+        <th>ID</th>
+        <th th:text="${word.getId()}">ID</th>
+    </tr>
+    <tr>
+        <th>Expression</th>
+        <th th:text="${word.getExpression()}">Expression</th>
+    </tr>
+    <tr>
+        <th>Translation</th>
+        <th id="answer" style="display: none" th:text="${word.getTranslation()}">Translation</th>
+    </tr>
+</table>
+
+<div align="center">
+    </br>
+    <form onclick="toggle_show('answer')">
+        <input type="button" value="Show answer">
+    </form>
+    </br>
+    <form th:method="POST" th:action="@{/dictionary/learn(id=${word.getId()},direction='true')}">
+        <input type="submit" value="Know">
+    </form>
+    </br>
+    <form th:method="GET" th:action="@{/dictionary/learn}">
+        <input type="submit" value="Don't know">
+    </form>
+    </br>
+    <form th:method="GET" th:action="@{/dictionary}">
+        <input type="submit" value="EXIT">
+    </form>
+</div>
+
+</body>
+</html>
