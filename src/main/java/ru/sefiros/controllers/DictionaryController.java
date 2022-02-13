@@ -75,7 +75,19 @@ public class DictionaryController {
     //To initialize DB structure, execute /dictionary/createPostgresqlTable GET-request
     @GetMapping("/learn")
     public String learn(Model model) {
-        model.addAttribute("word", dictionaryDAO.getWordToLearn());
+        Word wordToLearn = dictionaryDAO.getWordToLearn();
+
+        model.addAttribute("ID", wordToLearn.getId());
+        if (wordToLearn.getTranslatedToRussianCount() > wordToLearn.getTranslatedToEnglishCount()) {
+            model.addAttribute("expression", wordToLearn.getTranslation());
+            model.addAttribute("translation", wordToLearn.getExpression());
+            model.addAttribute("direction", false); // from Russian to English
+        } else {
+            model.addAttribute("expression", wordToLearn.getExpression());
+            model.addAttribute("translation", wordToLearn.getTranslation());
+            model.addAttribute("direction", true); // from English to Russian
+        }
+
         return "dictionary/learn";
     }
 
@@ -83,8 +95,14 @@ public class DictionaryController {
     public String wordLearned(@RequestParam("id") int id,
                               @RequestParam("direction") boolean direction,
                               Model model) {
-        System.out.println(id);
-        System.out.println(direction);
+
+        Word learnedWord = dictionaryDAO.show(id);
+        if (direction == true) {
+            learnedWord.setTranslatedToRussianCount(learnedWord.getTranslatedToRussianCount() + 1);
+        } else {
+            learnedWord.setTranslatedToEnglishCount(learnedWord.getTranslatedToEnglishCount() + 1);
+        }
+        dictionaryDAO.updateLearnCount(id, learnedWord);
         return "redirect:/dictionary/learn";
     }
 

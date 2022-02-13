@@ -15,11 +15,15 @@
         <th>ID</th>
         <th>Expression</th>
         <th>Translation</th>
+        <th>To English</th>
+        <th>To Russian</th>
     </tr>
     <tr th:each="word : ${words}">
         <td><a th:href="@{/dictionary/{id}(id=${word.getId()})}" th:text="${word.getId()}">ID</a></td>
         <td><a th:href="@{/dictionary/{id}(id=${word.getId()})}" th:text="${word.getExpression()}">Expression</a></td>
         <td><a th:href="@{/dictionary/{id}(id=${word.getId()})}" th:text="${word.getTranslation()}">Translation</a></td>
+        <td><a th:href="@{/dictionary/{id}(id=${word.getId()})}" th:text="${word.getTranslatedToEnglishCount()}">To English</a></td>
+        <td><a th:href="@{/dictionary/{id}(id=${word.getId()})}" th:text="${word.getTranslatedToRussianCount()}">To Russian</a></td>
     </tr>
 </table>
 

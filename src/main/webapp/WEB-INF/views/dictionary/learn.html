@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
 
 <script type="text/javascript">
 function toggle_show(id) {
@@ -9,22 +9,26 @@ function toggle_show(id) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Word</title>
+    <title>Learning...</title>
 </head>
 <body>
 
 <table align="center" border="1" width="600">
     <tr>
         <th>ID</th>
-        <th th:text="${word.getId()}">ID</th>
+        <th th:text="${ID}">ID</th>
     </tr>
     <tr>
         <th>Expression</th>
-        <th th:text="${word.getExpression()}">Expression</th>
+        <th th:text="${expression}">Expression</th>
+    </tr>
+    <tr>
+        <th>Direction</th>
+        <th th:text="${direction}">Direction</th>
     </tr>
     <tr>
         <th>Translation</th>
-        <th id="answer" style="display: none" th:text="${word.getTranslation()}">Translation</th>
+        <th id="answer" style="display: none" th:text="${translation}">Translation</th>
     </tr>
 </table>
 
@@ -34,7 +38,7 @@ function toggle_show(id) {
         <input type="button" value="Show answer">
     </form>
     </br>
-    <form th:method="POST" th:action="@{/dictionary/learn(id=${word.getId()},direction='true')}">
+    <form th:method="POST" th:action="@{/dictionary/learn(id=${ID},direction=${direction})}">
         <input type="submit" value="Know">
     </form>
     </br>

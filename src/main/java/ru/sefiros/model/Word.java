@@ -4,6 +4,8 @@ public class Word {
     private int id;
     private String expression;
     private String translation;
+    private int translatedToRussianCount;
+    private int translatedToEnglishCount;
 
     public Word() {
     }
@@ -36,5 +38,21 @@ public class Word {
 
     public void setTranslation(String translation) {
         this.translation = translation;
+    }
+
+    public int getTranslatedToRussianCount() {
+        return translatedToRussianCount;
+    }
+
+    public void setTranslatedToRussianCount(int translatedToRussianCount) {
+        this.translatedToRussianCount = translatedToRussianCount;
+    }
+
+    public int getTranslatedToEnglishCount() {
+        return translatedToEnglishCount;
+    }
+
+    public void setTranslatedToEnglishCount(int translatedToEnglishCount) {
+        this.translatedToEnglishCount = translatedToEnglishCount;
     }
 }
